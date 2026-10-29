@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e2e7ed">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Página não encontrada — B0w Studio.">
+  <title>Página não encontrada | B0w Studio</title>
+  <link rel="icon" type="image/svg+xml" href="ASSETS/SIMBOLO%20BOW%20BRANCA.svg">
+  <link rel="stylesheet" href="css/404.css">
+</head>
+<body>
+  <header class="error-nav">
+    <a class="error-brand" href="./index.html" aria-label="B0w Studio — voltar ao início" title="Voltar para o início">
+      <img src="ASSETS/LOGO%20BOW%20PRETA.svg" alt="B0w Studio" width="112" height="39">
+    </a>
+    <p><span>Erro</span><strong>404</strong></p>
+  </header>
+
+  <main class="error-main">
+    <section class="error-copy" aria-labelledby="error-title">
+      <h1 id="error-title"><span>Essa página</span><strong>perdeu a direção.</strong></h1>
+      <p class="error-description">O endereço que você tentou acessar não existe ou foi movido.<br>Vamos colocar sua navegação de volta no caminho certo.</p>
+      <a class="error-action" href="index.html">
+        <span>Voltar para o início</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <div class="error-visual bow-hero" aria-hidden="true">
+      <p class="error-number">404</p>
+      <canvas class="error-canvas" id="hero-3d"></canvas>
+    </div>
+  </main>
+
+  <footer class="error-footer">
+    <p>B0w Studio © <span id="error-year">2026</span></p>
+    <a href="index.html#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="js/symbol.js"></script>
+  <script src="js/hero3d.js"></script>
+  <script>
+    document.getElementById('error-year').textContent = new Date().getFullYear();
+    window.BOWHero?.start?.();
+  </script>
+</body>
+</html>

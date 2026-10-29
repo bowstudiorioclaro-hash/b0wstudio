@@ -1,0 +1,38 @@
+@font-face{font-family:"Clash Display";src:url("../ASSETS/ClashDisplay-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("../ASSETS/ClashDisplay-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("../ASSETS/ClashDisplay-Medium.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Clash Display";src:url("../ASSETS/ClashDisplay-Semibold.otf") format("opentype");font-weight:600;font-style:normal;font-display:swap}
+:root{--ink:#090a0b;--steel:#e2e7ed;--muted:#636970;--line:rgba(9,10,11,.22);--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--steel);color:var(--ink);font-family:Arial,sans-serif}
+body{position:relative;display:grid;min-height:100svh;grid-template-rows:auto 1fr auto;overflow:hidden;background:radial-gradient(circle at 78% 38%,rgba(255,255,255,.75),transparent 25%),var(--steel)}
+body::before{position:fixed;inset:0;background-image:linear-gradient(rgba(9,10,11,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(9,10,11,.035) 1px,transparent 1px);background-size:5rem 5rem;content:"";opacity:.45;pointer-events:none;mask-image:linear-gradient(90deg,transparent,black 45%,black)}
+a{color:inherit;text-decoration:none}
+.error-nav,.error-footer{position:relative;z-index:4;display:flex;align-items:center;justify-content:space-between;width:100%;padding-inline:clamp(1.4rem,3vw,3.6rem)}
+.error-nav{height:clamp(5.2rem,8vw,7rem);border-bottom:1px solid var(--line)}
+.error-brand{display:block;width:clamp(5.8rem,7vw,7rem);transition:opacity .25s ease}.error-brand:hover{opacity:.55}.error-brand img{display:block;width:100%;height:auto}
+.error-nav>p{display:flex;align-items:center;gap:.75rem;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase}.error-nav>p span{color:var(--muted)}.error-nav>p strong{font-family:"Clash Display",sans-serif;font-size:1rem;font-weight:600;letter-spacing:0}
+.error-main{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.9fr) minmax(24rem,1.1fr);align-items:center;width:100%;max-width:120rem;margin:auto;padding:clamp(2rem,4vw,5rem) clamp(1.4rem,6vw,7rem)}
+.error-copy{position:relative;z-index:3;max-width:47rem}
+.error-copy h1{font-family:"Clash Display",sans-serif;font-size:clamp(3.25rem,5.4vw,6.4rem);font-weight:500;letter-spacing:-.045em;line-height:.94}.error-copy h1 span,.error-copy h1 strong{display:block;opacity:0;transform:translateY(1em);animation:error-title 1s var(--ease) forwards}.error-copy h1 span{font-weight:500;animation-delay:.14s}.error-copy h1 strong{margin-top:-.04em;color:var(--ink);font-size:.68em;font-weight:300;letter-spacing:-.025em;white-space:nowrap;animation-delay:.22s}
+.error-description{max-width:37rem;margin-top:clamp(2rem,3vw,3rem);color:var(--muted);font-size:clamp(.92rem,1.1vw,1.12rem);line-height:1.6;opacity:0;animation:error-rise .9s var(--ease) .38s forwards}
+.error-action{display:flex;width:min(100%,18rem);align-items:center;justify-content:space-between;margin-top:clamp(1.75rem,2.5vw,2.5rem);padding:1.15rem 1.25rem;border:1px solid var(--ink);background:var(--ink);color:#fff;font-size:.64rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;opacity:0;transition:background-color .3s,color .3s;animation:error-rise .9s var(--ease) .48s forwards}.error-action span:last-child{font-size:.95rem;transition:transform .35s var(--ease)}.error-action:hover{background:transparent;color:var(--ink)}.error-action:hover span:last-child{transform:translate(4px,-4px)}
+.error-visual{position:relative;display:grid;min-height:min(64vh,48rem);place-items:center;perspective:1000px}
+.error-number{position:absolute;inset:50% auto auto 50%;color:transparent;font-family:"Clash Display",sans-serif;font-size:clamp(15rem,28vw,34rem);font-weight:600;letter-spacing:-.1em;line-height:.7;-webkit-text-stroke:1px rgba(9,10,11,.16);transform:translate(-50%,-50%);white-space:nowrap;opacity:0;animation:error-number-in 1.3s var(--ease) .1s forwards}
+.error-canvas{position:absolute;z-index:1;inset:0;display:block;width:100%;height:100%;opacity:0;animation:error-canvas-in 1.2s var(--ease) .2s forwards;touch-action:pan-y}
+.error-visual .bh-fallback{position:absolute;z-index:1;top:50%;left:50%;display:block;width:min(72%,34rem);filter:invert(1) drop-shadow(1rem 1.8rem 1.2rem rgba(9,10,11,.2));transform:translate(-50%,-50%) rotate(-9deg)}
+.error-footer{height:4.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.58rem;letter-spacing:.09em;text-transform:uppercase}.error-footer a{display:flex;gap:.65rem;color:var(--ink);transition:opacity .25s}.error-footer a:hover{opacity:.55}
+@keyframes error-rise{to{opacity:1;transform:none}}
+@keyframes error-title{to{opacity:1;transform:translateY(0)}}
+@keyframes error-number-in{from{opacity:0;transform:translate(-50%,-47%) scale(.94)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes error-canvas-in{from{opacity:0;transform:translateY(2rem) scale(.94)}to{opacity:1;transform:none}}
+@media(max-width:900px){body{overflow:auto}.error-main{grid-template-columns:1fr;padding-top:clamp(3rem,8vw,5rem)}.error-copy{max-width:45rem}.error-copy h1{font-size:clamp(3.8rem,10.5vw,6.5rem)}.error-visual{min-height:clamp(23rem,62vw,38rem)}.error-number{font-size:clamp(15rem,50vw,28rem)}.error-footer{margin-top:1rem}}
+@media(max-width:560px){.error-nav{height:4.8rem}.error-nav>p span{display:none}.error-main{padding-inline:1.25rem}.error-copy h1{font-size:clamp(3rem,13.5vw,4.8rem)}.error-description{max-width:29rem}.error-action{width:100%}.error-visual{min-height:21rem}.error-footer{height:auto;min-height:4.5rem;gap:1rem;padding-block:1rem}.error-footer p{max-width:8rem;line-height:1.5}}
+@media(prefers-reduced-motion:reduce){.error-copy h1 span,.error-copy h1 strong,.error-description,.error-action,.error-number,.error-canvas{opacity:1;transform:none;animation:none}.error-action span:last-child{transition:none}}
+
+/* Compact 404 action */
+.error-action{width:min(100%,14rem);padding:.95rem 1rem}
+
+/* Enlarged clickable brand target */
+.error-brand{position:relative;z-index:10;cursor:pointer;pointer-events:auto}
+.error-brand::before{position:absolute;inset:-.75rem;content:""}
