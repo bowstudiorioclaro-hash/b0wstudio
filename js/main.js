@@ -790,14 +790,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const lockBackground = () => {
       savedScrollY = window.scrollY;
-      document.body.style.top = `-${savedScrollY}px`;
+      document.documentElement.classList.add("legal-scroll-locked");
       document.body.classList.add("legal-modal-open");
     };
 
     const unlockBackground = () => {
+      const root = document.documentElement;
+      const previousScrollBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      root.classList.remove("legal-scroll-locked");
       document.body.classList.remove("legal-modal-open");
-      document.body.style.top = "";
-      window.scrollTo(0, savedScrollY);
+      if (Math.abs(window.scrollY - savedScrollY) > .5) window.scrollTo({ top: savedScrollY, left: 0, behavior: "auto" });
+      window.requestAnimationFrame(() => {
+        root.style.scrollBehavior = previousScrollBehavior;
+      });
     };
 
     const showModal = (name, trigger) => {
@@ -816,7 +822,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       modal.hidden = false;
       window.requestAnimationFrame(() => {
         modal.classList.add("is-open");
-        modal.querySelector(".legal-dialog")?.focus();
+        modal.querySelector(".legal-dialog")?.focus({ preventScroll: true });
       });
     };
 
